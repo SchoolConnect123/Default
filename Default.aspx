@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#"
+<%@ Page Language="C#"
     AutoEventWireup="true"
     Async="true"
     CodeFile="Default.aspx.cs"
@@ -837,7 +837,7 @@
 
 <body>
 
-<form id="form1" runat="server">
+<form id="frmSCOMain" runat="server">
 
 <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=227795405032949&ev=PageView&noscript=1"/></noscript>
     <!-- Load Facebook SDK for JavaScript -->
@@ -987,13 +987,14 @@
             </div>
         </section>
         
-         <section id="sliderdiv" style="display:none">
+<!-- === START: Olympiad + PowerPack Registration Section === -->
+<section id="sliderdiv" style="display:none">
   <div class="slider-form">
     <div class="signup-form defaultsignup">
 
       <h4>Olympiad Registration 2025</h4>
 
-      <asp:Label ID="lblMessage" runat="server" Text="" CssClass="" />
+      <asp:Label ID="lblMessage" runat="server" CssClass="alert" Text="" />
 
       <!-- Olympiad selector -->
       <div id="olampiadpackages" style="position: relative">
@@ -1004,18 +1005,16 @@
           SelectionMode="Multiple" />
       </div>
 
-      <!-- Currency radios + amount -->
-      <div style="display: flex; margin-top: 10px;">
+      <!-- Currency + Price -->
+      <div style="display: flex; margin-top:10px;">
         <div class="col-sm-3 form-radio-btn">
-          <label class="d-flex">
-            <input type="radio" name="currency" value="USD" checked="checked" />
-            <span>USD</span>
+          <label>
+            <input type="radio" name="currency" value="USD" checked /> USD
           </label>
         </div>
         <div class="col-sm-3 form-radio-btn">
-          <label class="d-flex">
-            <input type="radio" name="currency" value="INR" />
-            <span>INR</span>
+          <label>
+            <input type="radio" name="currency" value="INR" /> INR
           </label>
         </div>
         <div class="col-sm-6 pr-1">
@@ -1028,7 +1027,7 @@
         </div>
       </div>
 
-      <!-- Student Details -->
+      <!-- Student details -->
       <asp:TextBox
         ID="txtName"
         runat="server"
@@ -1074,6 +1073,7 @@
             Placeholder="Mobile No."
             MaxLength="20"
             required="required" />
+
           <asp:TextBox
             ID="txtEmail"
             runat="server"
@@ -1090,6 +1090,7 @@
             CssClass="form-control"
             Placeholder="School Contact No."
             MaxLength="20" />
+
           <asp:TextBox
             ID="txtSchoolEmail"
             runat="server"
@@ -1100,22 +1101,56 @@
         </div>
       </div>
 
-      <!-- Hidden fields to carry JS-calculated values -->
+      <!-- PowerPack checkbox & list (unchanged) -->
+      <div style="display:flex; align-items:center; margin:10px 0;" id="powerPackDiv">
+        <asp:Label
+          ID="txtpplabel"
+          runat="server"
+          CssClass="sco-packages"
+          Text="Do you want to add Genius Questions?"
+          Style="margin-right:8px;" />
+        <asp:CheckBox
+          ID="isPowerPack"
+          runat="server"
+          CssClass="checkboxprop" />
+      </div>
+
+      <div id="showPowerPackList" style="display:none; margin-bottom:10px;">
+        <asp:ListBox
+          ID="ddlPowerPack"
+          runat="server"
+          CssClass="list-group form-control"
+          SelectionMode="Multiple" />
+      </div>
+<!-- PowerPack price display -->
+<div id="DivPrice1" style="margin-top:10px;">
+  <asp:TextBox 
+    ID="txtPrice1" 
+    runat="server" 
+    CssClass="form-control" 
+    ReadOnly="true" />
+</div>
+
+
+      <!-- Hidden fields to carry currency/selection -->
       <asp:HiddenField ID="txtCurrency" runat="server" />
       <asp:HiddenField ID="selecetedOP" runat="server" />
 
-      <!-- Submit button -->
+      <!-- Your submit button -->
       <asp:Button
         ID="btnRegister"
         runat="server"
         CssClass="signup-btn"
         Text="Sign Up and Register"
         OnClick="btnRegister_Click"
-        UseSubmitBehavior="true" />
+        UseSubmitBehavior="true"
+        Style="width:100%; margin-top:10px;" />
 
     </div>
   </div>
 </section>
+<!-- === END: Olympiad + PowerPack Registration Section === -->
+
 
   
         <div class="row"></div>
