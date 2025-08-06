@@ -182,7 +182,6 @@
 </script>
 
 
-	
 <!-- Facebook Pixel Code -->
 <script>
     !function (f, b, e, v, n, t, s) {
@@ -835,9 +834,13 @@
 
 </head>
 
+
+
 <body>
 
 <form id="frmSCOMain" runat="server">
+
+<asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods="true" />
 
 <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=227795405032949&ev=PageView&noscript=1"/></noscript>
     <!-- Load Facebook SDK for JavaScript -->
@@ -1044,7 +1047,8 @@
         MaxLength="250"
         required="required" />
 
-      <div class="row" style="margin-top:10px;">
+
+<div class="row" style="margin-top:10px;">
         <div class="col-sm-6">
           <asp:DropDownList
             ID="ddlCourse"
@@ -1053,6 +1057,7 @@
             AppendDataBoundItems="true"
             required="required" />
         </div>
+
         <div class="col-sm-6">
           <asp:TextBox
             ID="txtCountry"
